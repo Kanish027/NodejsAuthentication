@@ -86,7 +86,7 @@ app.post("/login",async(req,res)=>{
 
     let user = await User.findOne({email});
 
-    if(!user) return res.redirect("/register");
+    if(!user) return res.render("login",{msgs:"User doesn't exists please sign up!"});
 
     const isMatch = await bcrypt.compare(password,user.password);
 
